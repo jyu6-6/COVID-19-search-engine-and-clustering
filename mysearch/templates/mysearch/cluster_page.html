@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+
+    .navbar-header
+    {height: 100px;}
+    input[type=search] {
+      background: #555 url(http://hp-proliant.co.uk/qual_images/mob-search-icon.png) no-repeat 9px center;
+      border: solid 1px #ccc;
+      padding: 9px 10px 9px 32px;
+      width: 55px;
+    }
+    input[type=search]:focus {
+    width: 600px;
+    background-color: #ccc;
+    border-color: #333;
+    border: solid 1px #fff;
+    }
+    .search_form{
+      padding-left: 320px;
+      padding-top: 30px;
+    }
+    .small_nav{
+      height: 20px;
+      background-color: #404040;
+    }
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 1000px;
+    background-color: #202020;}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #202020;
+      height: 100%;
+    }
+    p{
+      color: #FFFFFF;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    a{
+      font-size: 140%;
+    }
+    .search_button{
+      display: none;
+    }
+    .link_button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cluster_link_button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  cursor: pointer;
+}
+.buttons { text-align: left; font-weight: bold;
+  font-family: arial, sans-serif;font-size: 110%;}
+.buttons .btn { float: none; }
+
+.page_form{
+  display:inline-block
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-left: 1em; 
+  text-indent: -.7em;
+}
+li::before {
+  content: "• ";
+  color: #069; 
+}
+.display_pic{
+  color: #069;
+  font-weight: bold;
+  font-family: arial, sans-serif;
+  font-size: 110%;
+}
+</style>
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="https://images.newscientist.com/wp-content/uploads/2020/02/11165812/c0481846-wuhan_novel_coronavirus_illustration-spl.jpg" height=100px>
+    </div>
+    <div class="navbar-header">
+
+      <form class="search_form" method="get" action="../">
+        {% csrf_token %}
+      <input class="form-control mr-sm-2" type="text" placeholder="{{my_query}}" name="my_query" aria-label="Search">
+      <button type="submit" class="search_button"></button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+<div class="small_nav">
+  <p align=right>About {{num_result}} results</p>
+</div>
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <!-- <p>Space for different clusters</p> -->
+
+      <div class="buttons btn-group col-md-5">
+      {% for each in results_clusters %}
+      <form action="../cluster_page/" method="get" class="page_form">
+      <input type="hidden" value="{{each}}" name="cluster_name">
+      <ul>
+      <li>
+      <button class="cluster_link_button" type="submit">{{each}}</button>
+      </li>
+      </ul>
+      </form>
+      <br>
+      {% endfor %}
+      </div>
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <!-- <p>space for displaying results</p> -->
+      <!---test--->
+      <!-- <p>test title:</p>
+      <p>
+        {{title}}
+      </p> -->
+      <!---end test--->
+      <!---test--->
+      <!-- <p>test query:</p>
+      <p>
+        {{my_query}}
+      </p> -->
+      <!---end test--->
+      <br>
+
+      {% for each in query_result %}
+
+      <!-- 
+      <p>{{each.0}}</p>id
+      <p>{{each.1.0.0}}</p>title
+      <p>{{each.1.0.1}}</p>author
+      <p>{{each.1.1.0}}</p>url
+      -->
+
+      <a href="{{each.1.1.0}}">{{each.1.0.0}}</a>
+      <p>{{each.1.0.1}}</p>
+      <br>
+
+      {% endfor %}
+
+      {% for each in page_num %}
+
+      <form action="../page_selection/" method="get" class="page_form">
+      <input type="hidden" value="{{each}}" name="page_number">
+      <button class="link_button" type="submit">{{each}}</button>
+      </form>
+
+      {% endfor %}
+
+    </div>
+    <div class="col-sm-2 sidenav">
+      <!-- <p>Space for pictures</p> -->
+      <!---
+      <div class="well">
+        <p>Space for pictures</p>
+      </div>
+      --->
+      <form action="../results_clustering/" class="page_form">
+            <button class="cluster_link_button"><p class="display_pic">Results Clustering</p></button>
+      </form>
+      
+
+      <br>
+
+      <form action="../word_cloud/" class="page_form">
+            <button class="cluster_link_button"><p class="display_pic">Word Cloud</p></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
