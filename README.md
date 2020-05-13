@@ -1,5 +1,7 @@
 # COVID-19-search-engine-and-clustering  
-This project includes a search engine specially built for the CORD dataset, which contains the search results clustering function. Besides, there are data analysis and visualization both for the whole dataset and your search results. All are presented on a Django-frame website.
+The main purpose of this tool is to serve the research community members, whether it be scholars, grad school students, or science enthusiasts. Since the outbreak of the coronavirus pandemic, researchers around the world have been trying to get a basic understanding of this situation, how it originated, what’s the biological explanation behind this, and most importantly, how to prevent the potential further damage to human kind. There are multiple areas surrounding this issue, from sociology, chemistry to biology, and different scholars has their own unique understanding of this situation, therefore the amount of information and papers related to this disease might be overwhelming to some people, hence our tool would help filter the unwanted materials and render the most relevant ones to those who needed it based on their own preferences.  
+
+This project includes a search engine specially built for the CORD dataset, you could search and see the results are splited into different clusters and the main topic each cluster represents for. Besides, there are data analysis and visualization both for the whole dataset and your search results. All are presented on a Django-framed website.
 
 ## Demo
 Here is a [demo website](http://jyu66.pythonanywhere.com/mysearch/) to help you get a taste of this project.  
