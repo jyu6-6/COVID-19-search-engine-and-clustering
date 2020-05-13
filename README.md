@@ -5,6 +5,10 @@ This project includes a search engine specially built for the CORD dataset, whic
 Here is a [demo website](http://jyu66.pythonanywhere.com/mysearch/) to help you get a taste of this project.  
 Tip: If you encounter an error related to 'TkAgg' or 'tk', just refresh the page.
 
+## Data source
+[COVID-19 Open Research Dataset Challenge (CORD-19)](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)  
+We used the biorxiv_medrxiv/biorxiv_medrxiv/pdf_json data set. 
+
 ## Usage
 Please be patient and run all of the following steps.  
 ### Clean raw data
