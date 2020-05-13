@@ -14,10 +14,10 @@ Please be patient and run all of the following steps.
 ### Clean raw data
 run JSON_to_CSV.py, this should generate a file named 'biorxiv_medrxiv_clean.csv'.  
 ```
-python JSON_to_CSV.py
+(base) jing@JMacBook ~ % python JSON_to_CSV.py
 ```
 ### Set up the paths
-After downloading the whole project, be sure to modify paths in 3 files.  
+Be sure to modify paths in 3 files.  
 * mysearch/view.py, set 
 ```
 con=sqlite3.connect("/YOUR_LOCAL_PATH/db.sqlite3")
@@ -43,7 +43,7 @@ Open terminal, then direct to the COVID-19-search-engine-and-clustering folder.
 ```
 Then type 
 ```
-python manage.py runserver
+(base) jing@JMacBook ~ % python manage.py runserver
 ```
 Open your browser, go to http://127.0.0.1:8000/mysearch/ ， then you can search terms of your instrests like 'covid19', 'mask', 'rna' and see the result clusters and visualization!
 
@@ -55,7 +55,7 @@ Open your browser, go to http://127.0.0.1:8000/mysearch/ ， then you can search
 Python packages:  
 numpy, pandas, scipy, sklearn, nltk, matplotlib, seaborn, rank_bm25, wordcloud, django. All packages could be installed using pip.
 ```
-pip install PACKAGE_NAME
+(base) jing@JMacBook ~ % pip install PACKAGE_NAME
 ```
 If you have never used tokenization and stopwords in ntlk, please type the codes below in your terminal after installing the nltk package.
 ```
