@@ -66,3 +66,8 @@ If you have never used tokenization and stopwords in ntlk, please type the codes
 >>> nltk.download('stopwords')
 >>> nltk.download('punkt')
 ```
+
+## References
+* [search engine](https://www.kaggle.com/dgunning/cord-research-engine-bm25-specter-embeddings#2.-Loading-Research-Papers)  
+* [clustering](https://www.kaggle.com/maksimeren/covid-19-literature-clustering)  
+* [visualization](https://www.kaggle.com/maksimeren/covid-19-literature-clustering)
